@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PromoPack Studio — $49/mo Social Post Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <span class="badge">Productized service idea</span>
+        <h1>PromoPack Studio</h1>
+        <p>
+          A ready-to-sell, template-based social media generator for local businesses.
+          Charge $49–$99/mo for monthly post packs.
+        </p>
+        <div class="hero__cta">
+          <button class="primary" id="generate-cta">Generate sample pack</button>
+          <button class="ghost" id="copy-cta">Copy pricing page</button>
+        </div>
+      </div>
+      <div class="hero__card">
+        <h2>What you sell</h2>
+        <ul>
+          <li>30 branded posts per month</li>
+          <li>Editable Canva-ready copy</li>
+          <li>Weekly promo ideas + captions</li>
+          <li>Local hashtag bundles</li>
+        </ul>
+        <div class="price">
+          <span>$49</span>
+          <small>per month, per business</small>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>1. Create the deliverable in 60 seconds</h2>
+        <form id="pack-form">
+          <div class="grid">
+            <label>
+              Business name
+              <input type="text" name="businessName" placeholder="Luna Yoga Studio" required />
+            </label>
+            <label>
+              Business type
+              <input type="text" name="businessType" placeholder="Yoga studio" required />
+            </label>
+            <label>
+              Location
+              <input type="text" name="location" placeholder="Austin, TX" required />
+            </label>
+            <label>
+              Signature offer
+              <input type="text" name="offer" placeholder="First class free" required />
+            </label>
+            <label>
+              Tone
+              <select name="tone">
+                <option value="friendly">Friendly</option>
+                <option value="bold">Bold</option>
+                <option value="luxury">Luxury</option>
+                <option value="playful">Playful</option>
+              </select>
+            </label>
+            <label>
+              Primary goal
+              <select name="goal">
+                <option value="bookings">Book more appointments</option>
+                <option value="foot-traffic">Drive foot traffic</option>
+                <option value="memberships">Sell memberships</option>
+                <option value="reviews">Collect reviews</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary" type="submit">Generate 30-post pack</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>2. Deliverable preview</h2>
+        <div class="output" id="output">
+          <p class="muted">Fill the form and hit “Generate 30-post pack”.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>3. One-page sales site copy</h2>
+        <div class="output" id="sales-copy"></div>
+        <div class="actions">
+          <button class="ghost" id="copy-sales">Copy sales page copy</button>
+          <button class="ghost" id="download-sales">Download as .txt</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>4. Zero-touch operations</h2>
+        <div class="steps">
+          <ol>
+            <li>Run this app once to generate a 30-post pack + sales page copy.</li>
+            <li>Paste the sales copy into a free website builder (Carrd, Framer, or Notion).</li>
+            <li>Use Stripe Payment Links to collect $49–$99/month.</li>
+            <li>Each month, re-run the app for every client (takes ~60 seconds).</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built to get you to your first $1,000/month with 20 clients at $49 each.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
