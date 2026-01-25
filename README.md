@@ -1,24 +1,60 @@
+# Turing Test dal Vivo (GUI Desktop)
 
-> Apri questa pagina in [https://fosforoscienza.github.io/dado-digitale/](https://fosforoscienza.github.io/dado-digitale/)
+Applicazione desktop minimale per condurre un “Test di Turing dal vivo” con pubblico, con due client: **Esaminatore** e **Umano**. Il server gestisce stato, timer, ritardo LLM e broadcast.
 
-## Usa come Estensione
+## Requisiti
+- Python 3.10+
+- Chiave API OpenAI in `OPENAI_API_KEY`
 
-Questa repository può essere aggiunta come una **estensione** in MakeCode.
+## Installazione
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-* apri [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* clicca su **Nuovo Progetto**
-* fai clic su **Estensioni** nel menu della ruota dentata
-* cerca **https://github.com/fosforoscienza/dado-digitale** ed importa
+## Configurazione
+Modifica `config.json` se necessario:
+- `host` e `port` del server
+- `model` OpenAI
+- `llm_delay_seconds` (default 40s)
+- `human_timeout_seconds` (default 120s)
 
-## Modifica questo progetto
+## Avvio
+Apri tre terminali separati (o macchine diverse sulla stessa LAN):
 
-Per modificare questa repository in MakeCode.
+1) **Server**
+```bash
+python server.py
+```
 
-* apri [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* clicca su **Importa** quindi fai clic su **Importa INDIRIZZO**
-* incolla **https://github.com/fosforoscienza/dado-digitale** e clicca importa
+2) **Esaminatore** (proiettore)
+```bash
+python examiner_app.py
+```
 
-#### Metadati (usati per la ricerca, il rendering)
+3) **Client Umano**
+```bash
+python human_client_app.py
+```
 
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+## Uso in sala con pubblico
+- Avvia il server sulla macchina principale.
+- L’esaminatore lavora in modalità full-screen e vede le risposte A/B.
+- Il client umano risponde da un secondo computer o finestra.
+- Ogni domanda attiva un countdown visibile per l’LLM (ritardo di 40s).
+- Dopo il 3° round appare il pulsante “Rivela chi è l’AI”.
+
+## UX e scorciatoie
+- **Esaminatore**: Invio = invia domanda.
+- **Umano**: Ctrl+Invio = invia risposta.
+
+## Robustezza
+- Banner di disconnessione del client umano.
+- Timeout umano configurabile con pulsante “Salta risposta umano”.
+- Errori LLM mostrati come “Errore LLM”.
+
+## Troubleshooting
+- **Nessuna risposta LLM**: verifica `OPENAI_API_KEY` e il modello in `config.json`.
+- **Client umano disconnesso**: verifica rete LAN e indirizzo `host`/`port`.
+- **GUI non parte**: controlla di aver installato `PySide6`.
