@@ -22,3 +22,21 @@ Per modificare questa repository in MakeCode.
 
 * for PXT/microbit
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+## Generare un carosello Instagram automatico da testo
+
+Se vuoi trasformare un testo in slide 4:5 (1080x1350), puoi usare lo script locale:
+
+1. Crea un file di testo, ad esempio `contenuto.txt`.
+2. Esegui:
+
+```bash
+node scripts-genera-carosello.js --input contenuto.txt --output dist/carousel --title "Titolo carosello"
+```
+
+Lo script:
+- divide automaticamente il testo in blocchi leggibili,
+- genera una slide HTML per ogni blocco,
+- crea `index.html` per anteprima rapida.
+
+Output finale: file in `dist/carousel/slide-XX.html` pronti da esportare come immagini per Instagram.
